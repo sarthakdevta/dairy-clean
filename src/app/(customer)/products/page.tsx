@@ -207,12 +207,12 @@ export default function ProductsPage() {
                         onClick={(e) => {
                           e.preventDefault();
                           addToCart({
-                            id: product.id,
-                            name: product.name,
-                            price: product.price,
-                            image: product.image,
-                            quantity: 1,
-                          });
+  id: product.id,
+  name: product.name,
+  price: product.price,
+  image: product.image,
+  weight: product.weight, // ✅ correct
+});
                         }}
                       >
                         Add to Cart

@@ -134,12 +134,12 @@ export default function ProductDetailPage({
               onClick={() => {
                 for (let i = 0; i < qty; i++) {
                   addToCart({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    weight: product.weight,
-                  });
+  id: product.id,
+  name: product.name,
+  price: product.price,
+  image: product.image,
+  weight: product.weight, // ✅ correct
+});
                 }
                 alert("Added to cart");
               }}

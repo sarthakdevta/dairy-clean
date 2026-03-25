@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Upload, ImagePlus, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react"; // ADD THIS
 
 type Category = {
   id: string;
@@ -33,13 +34,14 @@ export default function AddProductPage() {
   });
 
   // Fetch categories on mount
-  useState(() => {
-    const fetchCategories = async () => {
-      const { data } = await supabase.from("categories").select("*").order("name");
-      if (data) setCategories(data);
-    };
-    fetchCategories();
-  }, []);
+ useEffect(() => {
+  const fetchCategories = async () => {
+    const { data } = await supabase.from("categories").select("*").order("name");
+    if (data) setCategories(data);
+  };
+
+  fetchCategories();
+}, []);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

@@ -62,7 +62,12 @@ export default function AdminHomepagePage() {
       const updates = Object.entries(content).map(([section, contentData]) => ({
         section,
         content: contentData,
-        enabled: section !== "whyChooseUs" ? true : contentData.enabled,
+        enabled:
+  section !== "whyChooseUs"
+    ? true
+    : "enabled" in contentData
+    ? contentData.enabled
+    : false,
       }));
 
       for (const update of updates) {

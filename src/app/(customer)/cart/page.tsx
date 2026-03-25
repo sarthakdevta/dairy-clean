@@ -74,11 +74,14 @@ export default function CartPage() {
                 {/* DETAILS */}
                 <div className="flex-1">
                   <h3 className="font-semibold">{item.name}</h3>
-                  {item.weight && (
-                    <p className="text-sm text-muted-foreground">
-                      {item.weight}
-                    </p>
-                  )}
+
+                  {/* ✅ SAFE ACCESS */}
+                  {(item as any).weight && (
+  <p className="text-sm text-muted-foreground">
+    {(item as any).weight}
+  </p>
+)}
+
                   <p className="text-primary font-bold mt-1">
                     ₹{item.price}
                   </p>
